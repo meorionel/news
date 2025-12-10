@@ -13,6 +13,11 @@ const router = createRouter({
 			name: "Netease News",
 			component: () => import("@/views/neteaseNews.vue"),
 		},
+		{
+			path: "/wearteDate",
+			name: "wearteDate",
+			component: () => import("@/views/wearteDate.vue"),
+		},
 	],
 });
 
