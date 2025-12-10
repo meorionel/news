@@ -6,6 +6,9 @@ import router from "./router";
 import { Icon } from "@iconify/vue";
 import { Search } from 'vant';
 
+
+
+
 const app = createApp(App);
 app.use(createPinia());
 app.use(router);

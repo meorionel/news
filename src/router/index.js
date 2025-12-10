@@ -9,9 +9,9 @@ const router = createRouter({
 			component: () => import("@/views/index.vue"),
 		},
 		{
-			path: "/neteaseNews",
-			name: "Netease News",
-			component: () => import("@/views/neteaseNews.vue"),
+			path: "/sspai",
+			name: "少数派",
+			component: () => import("@/views/sspai.vue"),
 		},
 		{
 			path: "/weaterDate",
