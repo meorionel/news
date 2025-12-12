@@ -3,7 +3,7 @@
 		<div v-for="item in list" :key="item.path">
 			<router-link
 				:to="item.path"
-				class="tab text-sm shrink-0"
+				class="tab text-sm shrink-0 rounded-lg"
 				:class="{ 'tab-active shadow-sm bg-sky-100/75 text-sky-800 py-1 h-auto': item.name === router.currentRoute.value.name }"
 				>{{ item.name }}
 			</router-link>
