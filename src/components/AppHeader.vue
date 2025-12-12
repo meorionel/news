@@ -9,8 +9,7 @@
 			<span class="text-red-500">e</span>
 			News
 		</div>
-		<div class="flex items-center gap-3">
-			<Icon icon="gravity-ui:magnifier" class="text-xl text-gray-600" />
+		<div class="flex items-center gap-5">
 			<div class="avatar avatar-online">
 				<div class="w-8 rounded-full">
 					<img src="https://gravatar.s22y.moe/avatar/me" />
