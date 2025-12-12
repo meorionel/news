@@ -18,6 +18,16 @@ const router = createRouter({
 			name: "查询天气",
 			component: () => import("@/views/weaterDate.vue"),
 		},
+		{
+			path: "/collect",
+			name: "收藏",
+			component: () => import("@/views/collect.vue"),
+		},
+		{
+			path: "/setting",
+			name: "设置",
+			component: () => import("@/views/setting.vue"),
+		}
 	],
 });
 

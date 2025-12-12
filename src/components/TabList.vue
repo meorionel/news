@@ -19,7 +19,11 @@ const list = ref([]);
 
 onMounted(() => {
 	const allRoutes = router.getRoutes();
-	list.value = allRoutes.map((route) => {
+	const filteredRoutes = allRoutes.filter((route) => {
+		return route.name !== "收藏" && route.name !== "设置";
+	});
+
+	list.value = filteredRoutes.map((route) => {
 		return {
 			name: route.name,
 			path: route.path,

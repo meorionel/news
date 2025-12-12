@@ -80,6 +80,6 @@ import { useForYouStore } from "@/stores/forYou";
 const forYouStore = useForYouStore();
 
 onMounted(() => {
-	forYouStore.getList();
+	// forYouStore.getList();
 });
 </script>
