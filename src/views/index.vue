@@ -1,28 +1,85 @@
 <template>
-	<div>
-		<!-- <div class="relative">
-			<div class="carousel w-screen">
-				<div id="item1" class="carousel-item w-full">
-					<img src="https://img.daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.webp" class="w-full" />
+	<ul class="flex flex-col gap-4">
+		<template v-if="forYouStore.list.length > 0">
+			<template v-for="(item, index) in forYouStore.list" :key="item.title">
+				<li class="w-full flex flex-col gap-2 p-4">
+					<h2 class="text-2xl text-sky-800">{{ item.title }}</h2>
+					<ul class="list flex flex-col gap-4">
+						<template v-for="(items, indexs) in item.data">
+							<li class="list-row px-0 w-full flex flex-col gap-2" v-if="indexs === 0">
+								<div class="w-full h-42 rounded-lg overflow-hidden" v-if="index !== 2">
+									<img :src="items.cover" :alt="item.cover" class="w-full h-full object-cover" />
+								</div>
+								<p class="text-xs text-gray-600">{{ items.author }}</p>
+								<p class="text-sm font-bold text-gray-800">{{ items.title }}</p>
+								<div class="flex items-center justify-between">
+									<p class="text-xs text-gray-600">{{ formatTime(items.timestamp) }}</p>
+									<a :href="item.url" target="_blank" class="btn btn-xs rounded-full pr-3 pl-2.5 text-gray-600">
+										<Icon icon="gravity-ui:book" class="text-xs text-sky-600" />
+										阅读
+									</a>
+								</div>
+							</li>
+							<li class="list-row px-0 w-full flex items-center gap-2" v-else>
+								<div class="w-2/3 flex flex-col gap-2" :class="{ 'w-full': index === 2 }">
+									<p class="text-xs text-gray-600">{{ items.author }}</p>
+									<p class="text-sm font-bold text-gray-800">{{ items.title }}</p>
+									<div class="flex items-center justify-between">
+										<p class="text-xs text-gray-600">{{ formatTime(items.timestamp) }}</p>
+										<a :href="item.url" target="_blank" class="btn btn-xs rounded-full pr-3 pl-2.5 text-gray-600">
+											<Icon icon="gravity-ui:book" class="text-xs text-sky-600" />
+											阅读
+										</a>
+									</div>
+								</div>
+								<div class="w-1/3 h-24 rounded-lg overflow-hidden" v-if="index !== 2">
+									<img :src="items.cover" :alt="item.cover" class="w-full h-full object-cover" />
+								</div>
+							</li>
+						</template>
+					</ul>
+				</li>
+				<li class="bg-gray-200 h-2 w-full"></li>
+			</template>
+		</template>
+		<template v-else>
+			<div class="skeleton h-8 w-26 m-4 mb-0"></div>
+			<li class="p-4 w-full flex flex-col gap-2">
+				<div class="skeleton h-42 w-full"></div>
+				<div class="skeleton h-4 w-28"></div>
+				<div class="skeleton h-4 w-full"></div>
+				<div class="skeleton h-4 w-full"></div>
+				<div class="skeleton h-4 w-12"></div>
+			</li>
+			<li class="p-4 w-full flex items-center gap-2">
+				<div class="w-2/3 flex flex-col gap-2">
+					<div class="skeleton h-4 w-28"></div>
+					<div class="skeleton h-4 w-full"></div>
+					<div class="skeleton h-4 w-full"></div>
+					<div class="skeleton h-4 w-12"></div>
 				</div>
-				<div id="item2" class="carousel-item w-full">
-					<img src="https://img.daisyui.com/images/stock/photo-1609621838510-5ad474b7d25d.webp" class="w-full" />
+				<div class="w-1/3 h-24 rounded-lg overflow-hidden skeleton"></div>
+			</li>
+			<li class="p-4 w-full flex items-center gap-2">
+				<div class="w-2/3 flex flex-col gap-2">
+					<div class="skeleton h-4 w-28"></div>
+					<div class="skeleton h-4 w-full"></div>
+					<div class="skeleton h-4 w-full"></div>
+					<div class="skeleton h-4 w-12"></div>
 				</div>
-				<div id="item3" class="carousel-item w-full">
-					<img src="https://img.daisyui.com/images/stock/photo-1414694762283-acccc27bca85.webp" class="w-full" />
-				</div>
-				<div id="item4" class="carousel-item w-full">
-					<img src="https://img.daisyui.com/images/stock/photo-1665553365602-b2fb8e5d1707.webp" class="w-full" />
-				</div>
-			</div>
-			<div class="flex justify-center gap-2 py-2 absolute bottom-1 left-1">
-				<a href="#item1" class="btn btn-xs">1</a>
-				<a href="#item2" class="btn btn-xs">2</a>
-				<a href="#item3" class="btn btn-xs">3</a>
-				<a href="#item4" class="btn btn-xs">4</a>
-			</div>
-		</div> -->
-	</div>
+				<div class="w-1/3 h-24 rounded-lg overflow-hidden skeleton"></div>
+			</li>
+		</template>
+	</ul>
 </template>
 
-<script setup></script>
+<script setup>
+import { onMounted } from "vue";
+import { formatTime } from "@/utils/formatTime";
+import { useForYouStore } from "@/stores/forYou";
+const forYouStore = useForYouStore();
+
+onMounted(() => {
+	forYouStore.getList();
+});
+</script>
