@@ -27,7 +27,12 @@ const router = createRouter({
 			path: "/setting",
 			name: "设置",
 			component: () => import("@/views/setting.vue"),
-		}
+		},
+		{
+			path: "/NewsFeed",
+			name: "新闻资料",
+			component: () => import("@/views/NewsFeed.vue"),
+		},
 	],
 });
 
