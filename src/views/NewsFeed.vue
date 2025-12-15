@@ -177,7 +177,7 @@ onMounted(() => {
 
 /* 新闻列表样式 */
 .news-list-container {
-	padding: 20px;
+	padding: 20px 0;
 }
 
 .loading,

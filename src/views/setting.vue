@@ -1,5 +1,5 @@
 <template>
-	<div class="px-4">
+	<div>
 		<label class="input mb-2 w-full rounded-lg">
 			<svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
 				<g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none" stroke="currentColor">

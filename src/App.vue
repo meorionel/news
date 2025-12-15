@@ -6,7 +6,7 @@
 				<TabList />
 			</template>
 		</div>
-		<div class="pt-24">
+		<div class="pt-24 px-4 pb-24">
 			<router-view></router-view>
 			<el-backtop :right="24" :bottom="100">
 				<Icon icon="gravity-ui:arrow-up-to-line" class="text-sm text-sky-500" />

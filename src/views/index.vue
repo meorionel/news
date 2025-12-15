@@ -2,7 +2,7 @@
 	<ul class="flex flex-col gap-4">
 		<template v-if="forYouStore.list.length > 0">
 			<template v-for="(item, index) in forYouStore.list" :key="item.title">
-				<li class="flex w-full flex-col gap-2 p-4">
+				<li class="flex w-full flex-col gap-2 py-4">
 					<h2 class="text-2xl text-sky-800">{{ item.title }}</h2>
 					<ul class="list flex flex-col gap-4">
 						<template v-for="(items, indexs) in item.data">

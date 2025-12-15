@@ -1,7 +1,7 @@
 <template>
 	<div class="py-4">
 		<template v-if="!sspaiStore.isError">
-			<form class="px-4 filter">
+			<form class="filter">
 				<label for="clear">
 					<input id="clear" class="hidden" type="reset" @click="sspaiStore.getList()" />
 					<div class="btn btn-xs btn-square mr-1 rounded-full">
@@ -15,7 +15,7 @@
 			<ul class="list">
 				<template v-if="sspaiStore.list.length > 0">
 					<template v-for="item in sspaiStore.list" :key="item.id">
-						<li class="list-row flex w-full flex-col gap-2">
+						<li class="list-row px-0 flex w-full flex-col gap-2">
 							<div class="h-46 w-full overflow-hidden rounded-lg">
 								<img :src="`https://cdnfile.sspai.com/${item.cover}`" :alt="item.cover" class="h-full w-full object-cover" />
 							</div>

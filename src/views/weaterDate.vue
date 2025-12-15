@@ -1,6 +1,6 @@
 <template>
-	<div>
-		<label class="input mt-2 ml-6">
+	<div class="pt-4">
+		<label class="input">
 			<svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
 				<g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none" stroke="currentColor">
 					<circle cx="11" cy="11" r="8"></circle>
@@ -12,7 +12,7 @@
 		</label>
 
 		<div v-if="weatherData.result && weatherData.result.list">
-			<div class="card bg-base-100 card-xs mt-4 ml-6 w-96 shadow-sm" v-for="wd in weatherData.result.list" :key="wd.date">
+			<div class="card bg-base-100 card-xs mt-4 w-full shadow-sm" v-for="wd in weatherData.result.list" :key="wd.date">
 				<div class="card-body">
 					<h2 class="card-title">{{ wd.date }}</h2>
 					<h3 class="card-title">{{ weatherData.result.province }}&nbsp;&nbsp;&nbsp;&nbsp;{{ wd.week }}&nbsp;&nbsp;&nbsp;&nbsp;{{ wd.weather }}</h3>
