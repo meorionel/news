@@ -8,6 +8,9 @@
 		</div>
 		<div class="pt-24">
 			<router-view></router-view>
+			<el-backtop :right="24" :bottom="100">
+				<Icon icon="gravity-ui:arrow-up-to-line" class="text-sm text-sky-500" />
+			</el-backtop>
 		</div>
 		<div class="fixed right-0 bottom-0 left-0">
 			<AppDock />
