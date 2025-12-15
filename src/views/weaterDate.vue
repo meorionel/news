@@ -50,6 +50,11 @@ let handlesearch = () => {
 		});
 };
 
+onMounted(() => {
+	search.value = "来宾市";
+	handlesearch();
+});
+
 const weatherData = ref([]);
 const weatherData1 = ref({
 	code: 200,
