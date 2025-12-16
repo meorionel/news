@@ -57,12 +57,36 @@ export default {
 				});
 
 				if (res.data.code === 200) {
-					res.data.result.list.forEach((element) => {
-						this.advice.push({
-							title: element.title,
-							content: element.content,
-						});
-					});
+					const rawData = res.data.result.list.map((element) => ({
+						title: element.title,
+						content: element.content,
+					}));
+
+					console.log("原始数据条数:", rawData.length);
+					console.log("原始数据:", rawData);
+
+					// 去重处理 - 你可以选择使用简单去重或智能合并
+					// 方法1：简单去重（推荐，如果内容相似）
+					const uniqueData = this.removeDuplicates(rawData);
+
+					// 方法2：智能合并（如果相同标题下有不同内容）
+					// const uniqueData = this.mergeDuplicates(rawData);
+
+					console.log("去重后条数:", uniqueData.length);
+					console.log("去重后数据:", uniqueData);
+
+					// 如果有重复被移除，显示提示
+					if (uniqueData.length < rawData.length) {
+						console.log(`移除了 ${rawData.length - uniqueData.length} 条重复数据`);
+					}
+
+					// 使用去重后的数据
+					this.advice = uniqueData;
+
+					// 如果去重后没有数据，显示提示
+					if (this.advice.length === 0) {
+						this.error = "未找到相关健康建议";
+					}
 				} else {
 					this.error = "未找到相关健康建议";
 				}
@@ -72,6 +96,19 @@ export default {
 			} finally {
 				this.loading = false;
 			}
+		},
+		removeDuplicates(items) {
+			const seen = new Set();
+			const result = [];
+
+			for (const item of items) {
+				if (!seen.has(item.title)) {
+					seen.add(item.title);
+					result.push(item);
+				}
+			}
+
+			return result;
 		},
 	},
 	mounted() {
