@@ -40,7 +40,7 @@ const initAMap = () => {
 					if (status === "complete" && result.info === "OK") {
 						const addressComponent = result.regeocode.addressComponent;
 						const city = addressComponent.city || addressComponent.province;
-                        weatherStore.search = city;
+						weatherStore.search = city;
 						weatherStore.handleSearch(city);
 					} else {
 						console.error("逆地理编码失败:", result);

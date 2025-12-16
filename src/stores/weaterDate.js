@@ -3,7 +3,7 @@ import { defineStore } from "pinia";
 import axios from "axios";
 
 export const useWeatherStore = defineStore("weather", () => {
-    const search = ref("来宾市");
+	const search = ref("来宾市");
 	const weatherData = ref([]);
 
 	let handleSearch = (search) => {
