@@ -19,6 +19,16 @@ const router = createRouter({
 			component: () => import("@/views/weaterDate.vue"),
 		},
 		{
+			path: "/NewsFeed",
+			name: "新闻资料",
+			component: () => import("@/views/NewsFeed.vue"),
+		},
+		{
+			path: "/Disease",
+			name: "疾病预防",
+			component: () => import("@/views/Disease.vue"),
+		},
+		{
 			path: "/collect",
 			name: "收藏",
 			component: () => import("@/views/collect.vue"),
@@ -29,16 +39,29 @@ const router = createRouter({
 			component: () => import("@/views/setting.vue"),
 		},
 		{
-			path: "/NewsFeed",
-			name: "新闻资料",
-			component: () => import("@/views/NewsFeed.vue"),
+			path: "/profile",
+			name: "个人资料",
+			component: () => import("@/views/profile.vue"),
 		},
 		{
-			path: "/Disease",
-			name: "疾病预防",
-			component: () => import("@/views/Disease.vue"),
+			path: "/auth/login",
+			name: "登录",
+			component: () => import("@/views/auth/login.vue"),
+		},
+		{
+			path: "/auth/register",
+			name: "注册",
+			component: () => import("@/views/auth/register.vue"),
 		},
 	],
+});
+
+router.beforeEach((to, from, next) => {
+	console.log(to.name);
+	if (to.name === "个人资料" && !window.localStorage.getItem("token")) {
+		return next({ name: "登录" });
+	}
+	next();
 });
 
 export default router;

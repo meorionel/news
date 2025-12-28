@@ -20,7 +20,7 @@ const list = ref([]);
 onMounted(() => {
 	const allRoutes = router.getRoutes();
 	const filteredRoutes = allRoutes.filter((route) => {
-		return route.name !== "收藏" && route.name !== "设置";
+		return route.name !== "收藏" && route.name !== "设置" && route.name !== "个人资料" && route.name !== "登录" && route.name !== "注册";
 	});
 
 	list.value = filteredRoutes.map((route) => {
